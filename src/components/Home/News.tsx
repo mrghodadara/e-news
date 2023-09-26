@@ -3,7 +3,6 @@ import { Container } from "@/layouts/Container";
 import NewsCard from "../Card/NewsCard";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Loader } from "../Loader/Index";
 import { OvalLoader } from "../Loader/Oval";
 
 interface INews {
@@ -11,7 +10,7 @@ interface INews {
   setProgress: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const PAGESIZE = 20;
+const PAGESIZE = 12;
 
 const News = ({ path, setProgress }: INews) => {
   const [loading, setLoading] = useState(false);
@@ -103,7 +102,7 @@ const News = ({ path, setProgress }: INews) => {
         }
       >
         {!loading && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 py-10">
+          <div className="grid grid-cols-1 gap-4 py-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             {newsList &&
               newsList.length > 0 &&
               newsList?.map((item, index) => (
