@@ -17,6 +17,9 @@
   },
   "prettier.ignorePath": ".gitignore",
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   } // Don't run prettier for files listed in .gitignore
 }

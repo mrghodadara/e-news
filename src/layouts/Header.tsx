@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Container } from "./Container";
-import Link from "next/link";
-import { twJoin } from "tailwind-merge";
-import { useRouter } from "next/router";
-import { NAVLINK } from "@/constants/Index";
-import { MenuIcon } from "@/components/Icons/MenuIcon";
-import CloseIcon from "@/components/Icons/CloseIcon";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { twJoin } from 'tailwind-merge';
+import { Container } from './Container';
+import CloseIcon from '../components/Icons/CloseIcon';
+import { MenuIcon } from '../components/Icons/MenuIcon';
+import { NAVLINK } from '../constants/Index';
 
 const Header = () => {
   const router = useRouter();
@@ -16,9 +16,9 @@ const Header = () => {
   useEffect(() => {
     if (typeof window !== undefined) {
       if (openMenu) {
-        document.body.classList.add("lg:overflow-auto", "overflow-hidden");
+        document.body.classList.add('lg:overflow-auto', 'overflow-hidden');
       } else {
-        document.body.classList.remove("overflow-hidden");
+        document.body.classList.remove('overflow-hidden');
       }
     }
   }, [openMenu]);
@@ -30,7 +30,7 @@ const Header = () => {
           <div className="flex flex-row items-center justify-between">
             <div>
               <Link
-                href={"/"}
+                href={'/'}
                 className="font-Inter text-2xl font-semibold italic leading-5 text-purple-700"
               >
                 E-Paper
@@ -44,10 +44,10 @@ const Header = () => {
                     href={path}
                     key={id}
                     className={twJoin(
-                      "rounded-lg border px-2 py-1.5 font-Inter text-base leading-5 lg:px-4 lg:py-2",
+                      'rounded-lg border px-2 py-1.5 font-Inter text-base leading-5 lg:px-4 lg:py-2',
                       query?.pathName === path || pathname === path
-                        ? "border-purple-700 bg-purple-700 text-white"
-                        : "border-transparent"
+                        ? 'border-purple-700 bg-purple-700 text-white'
+                        : 'border-transparent'
                     )}
                   >
                     {lable}
@@ -64,7 +64,7 @@ const Header = () => {
         </Container>
 
         {openMenu && (
-          <div className="fadeInRight fixed top-0 h-screen w-full overflow-y-auto bg-white p-3 flex flex-col justify-start items-center gap-4">
+          <div className="fadeInRight fixed top-0 flex h-screen w-full flex-col items-center justify-start gap-4 overflow-y-auto bg-white p-3">
             <div className="self-end">
               <button className="w-7" onClick={() => setOpenMenu(false)}>
                 <CloseIcon />
@@ -78,10 +78,10 @@ const Header = () => {
                     href={path}
                     key={id}
                     className={twJoin(
-                      "rounded-lg border px-4 py-1.5 font-Inter text-base leading-5",
+                      'rounded-lg border px-4 py-1.5 font-Inter text-base leading-5',
                       query?.pathName === path || pathname === path
-                        ? "border-purple-700 bg-purple-700 text-white"
-                        : "border-transparent"
+                        ? 'border-purple-700 bg-purple-700 text-white'
+                        : 'border-transparent'
                     )}
                     onClick={() => setOpenMenu(false)}
                   >

@@ -12,14 +12,6 @@
 /.next
 /out
 
-# next-sitemap
-public/robots.txt
-public/sitemap.xml
-public/sitemap-*.xml
-
-# cache
-.swc/
-
 # production
 /build
 
@@ -30,13 +22,11 @@ Thumbs.db
 
 # debug
 npm-debug.log*
-pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # dotenv local files
 .env*.local
-.env
 
 # local folder
 local

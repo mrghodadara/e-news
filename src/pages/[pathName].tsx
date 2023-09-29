@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Header } from "@/layouts/Header";
-import { GetServerSidePropsContext } from "next";
-import { NAVLINK } from "@/constants/Index";
-import { News } from "@/components/Home/News";
-import LoadingBar from "react-top-loading-bar";
+import type { GetServerSidePropsContext } from 'next';
+import { useState } from 'react';
+import LoadingBar from 'react-top-loading-bar';
+import { Header } from '../layouts/Header';
+import { NAVLINK } from '../constants/Index';
+import { News } from '../components/Home/News';
 
 const Index = ({ path }: { path: string }) => {
   const [progress, setProgress] = useState(0);
@@ -20,10 +20,10 @@ const Index = ({ path }: { path: string }) => {
 export default Index;
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { pathName } = context?.query;
-  const path = NAVLINK.find(({ path }) => path === pathName)?.path;
+  const pathName = context?.query?.pathName;
+  const getPath = NAVLINK.find(({ path }) => path === pathName)?.path;
 
-  if (!path) {
+  if (!getPath) {
     return {
       notFound: true,
     };
@@ -31,7 +31,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
-      path,
+      path: getPath,
     },
   };
 }

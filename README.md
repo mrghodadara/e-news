@@ -1,1 +1,3 @@
-# Project Readme
+#  Next JS 12+, Tailwind CSS 3 and TypeScript Boiler Plate
+
+

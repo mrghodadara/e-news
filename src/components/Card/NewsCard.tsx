@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const NOIMAGE =
-  "https://asiapulppaper.com/documents/20123/37290/asia-pulp-paper-e-paper-logo-box.jpg";
+  'https://asiapulppaper.com/documents/20123/37290/asia-pulp-paper-e-paper-logo-box.jpg';
 
 interface INewsCard {
   title?: string;
@@ -47,7 +47,7 @@ const NewsCard = ({
             Author: {author}
           </p>
           {url && (
-            <div className="flex justify-end items-center">
+            <div className="flex items-center justify-end">
               <a
                 href={url}
                 target="_blank"

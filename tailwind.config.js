@@ -5,10 +5,10 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      fontFamily:{
-        Poppins:'Poppins',
-        Roboto:'Roboto',
-        Inter:'Inter'
+      fontFamily: {
+        Poppins: 'Poppins',
+        Roboto: 'Roboto',
+        Inter: 'Inter',
       },
       colors: {
         primary: '#8B5CF6',

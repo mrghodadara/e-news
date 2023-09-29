@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Container } from "@/layouts/Container";
-import NewsCard from "../Card/NewsCard";
-import axios from "axios";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { OvalLoader } from "../Loader/Oval";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import NewsCard from '../Card/NewsCard';
+import { OvalLoader } from '../Loader/Oval';
+import { Container } from '../../layouts/Container';
 
 interface INews {
   path?: string;
@@ -31,7 +31,7 @@ const News = ({ path, setProgress }: INews) => {
   const handleNews = (category?: string) => {
     setLoading(true);
     setProgress(10);
-    let url = "";
+    let url = '';
 
     if (category) {
       url = `${process.env.NEXT_PUBLIC_NEWS_API_URL}v2/everything?q=${category}&pageSize=${PAGESIZE}&page=${page}&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
@@ -53,7 +53,7 @@ const News = ({ path, setProgress }: INews) => {
         }
       })
       .catch((error) => {
-        console.log("Error", error);
+        console.log('Error', error);
       })
       .finally(() => {
         setLoading(false);
@@ -62,7 +62,7 @@ const News = ({ path, setProgress }: INews) => {
   };
 
   const fetchNews = () => {
-    let url = "";
+    let url = '';
 
     if (path) {
       url = `${process.env.NEXT_PUBLIC_NEWS_API_URL}v2/everything?q=${path}&pageSize=${PAGESIZE}&page=${page}&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
@@ -74,18 +74,20 @@ const News = ({ path, setProgress }: INews) => {
       .get(url)
       .then((response) => {
         if (response?.data?.articles?.length) {
-          setNewsList([...newsList, ...response?.data?.articles]);
+          const data = newsList.concat(response?.data?.articles);
+          setNewsList(data);
           setTotalResults(response?.data?.totalResults);
           setPage(page + 1);
         }
       })
       .catch((error) => {
-        console.log("Error", error);
+        console.log('Error', error);
       })
       .finally(() => {});
   };
 
   useEffect(() => {
+    setNewsList([]);
     handleNews(path);
   }, [path]);
 
@@ -105,9 +107,29 @@ const News = ({ path, setProgress }: INews) => {
           <div className="grid grid-cols-1 gap-4 py-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             {newsList &&
               newsList.length > 0 &&
-              newsList?.map((item, index) => (
-                <NewsCard key={index} {...item} />
-              ))}
+              newsList?.map(
+                (
+                  {
+                    author,
+                    content,
+                    description,
+                    publishedAt,
+                    title,
+                    urlToImage,
+                  },
+                  index
+                ) => (
+                  <NewsCard
+                    key={index}
+                    author={author}
+                    content={content}
+                    description={description}
+                    publishedAt={publishedAt}
+                    title={title}
+                    urlToImage={urlToImage}
+                  />
+                )
+              )}
           </div>
         )}
 
