@@ -10,7 +10,7 @@ interface INews {
   setProgress: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const PAGESIZE = 12;
+// const PAGESIZE = 12;
 
 const News = ({ path, setProgress }: INews) => {
   const [loading, setLoading] = useState(false);
@@ -34,9 +34,9 @@ const News = ({ path, setProgress }: INews) => {
     let url = '';
 
     if (category) {
-      url = `${process.env.NEXT_PUBLIC_NEWS_API_URL}v2/everything?q=${category}&pageSize=${PAGESIZE}&page=${page}&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
+      url = `/api/news?q=${category}&page=${page}`;
     } else {
-      url = `${process.env.NEXT_PUBLIC_NEWS_API_URL}v2/everything?q=internation&pageSize=${PAGESIZE}&page=${page}&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
+      url = `/api/news?q=internation&page=${page}`;
     }
 
     setProgress(20);
@@ -65,9 +65,9 @@ const News = ({ path, setProgress }: INews) => {
     let url = '';
 
     if (path) {
-      url = `${process.env.NEXT_PUBLIC_NEWS_API_URL}v2/everything?q=${path}&pageSize=${PAGESIZE}&page=${page}&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
+      url = `/api/news?q=${path}&page=${page}`;
     } else {
-      url = `${process.env.NEXT_PUBLIC_NEWS_API_URL}v2/everything?q=internation&pageSize=${PAGESIZE}&page=${page}&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
+      url = `/api/news?q=internation&page=${page}`;
     }
 
     axios
