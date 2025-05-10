@@ -33,7 +33,7 @@ const Header = () => {
                 href={'/'}
                 className="font-Inter text-2xl font-semibold italic leading-5 text-purple-700"
               >
-                E-Paper
+                E-News
               </Link>
             </div>
             <div className="hidden flex-row items-center justify-between gap-3 md:flex lg:gap-4">
